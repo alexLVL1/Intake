@@ -50,7 +50,7 @@ export default function Home() {
 
   const [draft, setDraft] = useState<any>(empty);
   const [step, setStep] = useState(0);
-  const steps = ['Personal','Immigration','Documents','Consent','Review'] as const;
+  const steps = ['Personal','Immigration','Documents','Consent'] as const;
   const [errors, setErrors] = useState<string[]>([]);
   const [files, setFiles] = useState<File[]>([]);
   const [submittedId, setSubmittedId] = useState<string|undefined>();
@@ -179,15 +179,6 @@ export default function Home() {
               <div><label>Signature (type your full name)</label><input value={draft.consent.signature} onChange={e=>setDraft({...draft, consent:{...draft.consent, signature:e.target.value}})} /></div>
               <div><label>Date</label><input type="date" value={draft.consent.dateSigned} onChange={e=>setDraft({...draft, consent:{...draft.consent, dateSigned:e.target.value}})} /></div>
             </div>
-          </div>
-        )}
-
-        {step===4 && (
-          <div>
-            <div className="card"><strong>Personal</strong><pre>{JSON.stringify(draft.personal,null,2)}</pre></div>
-            <div className="card"><strong>Immigration</strong><pre>{JSON.stringify(draft.immigration,null,2)}</pre></div>
-            <div className="card"><strong>Documents</strong><div>Files: {files.length}</div><pre>{JSON.stringify({notes: draft.documents?.notes},null,2)}</pre></div>
-            <div className="card"><strong>Consent</strong><pre>{JSON.stringify(draft.consent,null,2)}</pre></div>
           </div>
         )}
 
