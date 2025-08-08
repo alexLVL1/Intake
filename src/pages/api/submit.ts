@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { createServiceClient } from '@/lib/supabase';
+import { createServiceClient } from '../../lib/supabase';
 import { z } from 'zod';
 
 export const config = {
