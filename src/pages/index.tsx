@@ -79,8 +79,11 @@ export default function Home() {
       setSubmittedId(data.submissionId);
       setDraft(empty); setFiles([]);
     } catch (e:any) {
-      setErrors([e.message || 'Submission failed.']);
-    }
+  const msg = (e?.issues && Array.isArray(e.issues))
+    ? e.issues.map((i:any)=> `${i.path?.join('.')||'field'}: ${i.message}`)
+    : (e?.message || 'Submission failed.');
+  setErrors(Array.isArray(msg) ? msg : [msg]);
+}
   }
 
   const pct = ((step+1)/steps.length)*100;
